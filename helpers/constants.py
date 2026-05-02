@@ -3,8 +3,7 @@ COGS = [
     "basic",
     "database",
     "help",
-    "moderation",
-    "utilities"
+    "moderation"
 ]
 
 DEVELOPER = [1430914683883491419, 975205351676854302]
