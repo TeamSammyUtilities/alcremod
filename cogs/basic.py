@@ -111,46 +111,6 @@ class Basic(commands.Cog):
         """Bot latency."""
         latency = round(self.bot.latency * 1000)
         await ctx.send(f"Pong! **{latency} ms**")
-
-    @commands.hybrid_command()
-    async def falcio(self, ctx: commands.Context):
-        """Specially for Falcio."""
-        from datetime import datetime
-        embed = discord.Embed(
-            title="Level 14 Litleo",
-            color=0x9CCFFF
-        )
-        embed.add_field(
-            name="Details",
-            value=(
-                "**XP:** 0/600"
-                "\n**Nature:** Serious"
-                "\n**Gender:** Female"
-            ),
-            inline=True
-        )
-        embed.add_field(
-            name="Stats",
-            value=(
-                "**HP:** 42 – IV: 1/31"
-                "\n**Attack:** 23 – IV: 28/31"
-                "\n**Defense:** 25 – IV: 27/31"
-                "\n**Sp. Atk:** 28 – IV: 14/31"
-                "\n**Sp. Def:** 25 – IV: 30/31"
-                "\n**Speed:** 27 – IV: 15/31"
-                "\n**Total IV:** 61.83%"
-            ),
-            inline=True
-        )
-        embed.set_footer(text=(
-            "Displaying pokémon 36423."
-            "\nID | 69f08eb84c060f686ffe8739"
-            "\nCaught"
-        ))
-        embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/1430914683883491419/09cdd0235eca17954a0d097cd8bcf17c.png?size=1024")
-        embed.set_image(url="https://cdn.poketwo.net/images/667.png")
-        embed.timestamp = datetime.fromtimestamp(1777372856)
-        await ctx.send(embed=embed)
         
 
 async def setup(bot):
