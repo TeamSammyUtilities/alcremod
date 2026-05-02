@@ -1,0 +1,21 @@
+COGS = [
+    "afk",
+    "basic",
+    "database",
+    "help",
+    "moderation",
+    "utilities"
+]
+
+DEVELOPER = [1430914683883491419, 975205351676854302]
+BOT_ID = 1490688062848499743
+
+SERVER = 1455553076093124806
+ERRORS = 1497194959554478140
+LOGS = 1497194965703327844
+
+DEFAULT_PREFIXES = [
+    f"<@{BOT_ID}> ",
+    f"<@!{BOT_ID}> "
+]
+DEFAULT_COLOR = 0xEEBEBA
