@@ -1,6 +1,5 @@
 import discord
 
-from contextlib import suppress
 from datetime import datetime, timezone, timedelta
 from discord.ext import commands, tasks
 from enum import Enum
@@ -125,15 +124,10 @@ class Moderation(commands.Cog):
                     member = guild.get_member(mute["user_id"])
 
                     if member:
-                        with suppress(discord.Forbidden, discord.HTTPException):
-                            await member.remove_roles(mute_role, reason="Mute expired")
-
-                            try:
-                                await member.send(
-                                    f"You have been unmuted in **{guild.name}**."
-                                )
-                            except discord.Forbidden:
-                                pass
+                       await member.remove_roles(mute_role, reason="Mute expired")
+                       await self.bot.dm_user(
+                           f"You have been unmuted in **{guild.name}**."
+                       )
                 else:
                     updated_mutes.append(mute)
 
@@ -221,9 +215,7 @@ class Moderation(commands.Cog):
         view = interface.Paginator([page])
         embed = view.get_embed()
 
-        with suppress(discord.Forbidden, discord.HTTPException):
-            await user.send(embed=embed)
-
+        await self.bot.dm_user(user, embed=embed)
         await ctx.send(embed=embed)
 
     @commands.hybrid_command()
@@ -297,9 +289,7 @@ class Moderation(commands.Cog):
         view = interface.Paginator([page])
         embed = view.get_embed()
 
-        with suppress(discord.Forbidden, discord.HTTPException):
-            await user.send(embed=embed)
-
+        await self.bot.dm_user(user, embed=embed)
         await ctx.send(embed=embed)
 
     @commands.hybrid_command()
@@ -342,9 +332,7 @@ class Moderation(commands.Cog):
         view = interface.Paginator([page])
         embed = view.get_embed()
 
-        with suppress(discord.Forbidden, discord.HTTPException):
-            await user.send(embed=embed)
-
+        await self.bot.dm_user(user, embed=embed)
         await ctx.send(embed=embed)
 
     @commands.hybrid_command()
@@ -385,9 +373,7 @@ class Moderation(commands.Cog):
         view = interface.Paginator([page])
         embed = view.get_embed()
 
-        with suppress(discord.Forbidden, discord.HTTPException):
-            await user.send(embed=embed)
-
+        await self.bot.dm_user(user, embed=embed)
         await ctx.guild.ban(user, reason=reason, delete_message_days=0)
 
         case = await self.create_case(
